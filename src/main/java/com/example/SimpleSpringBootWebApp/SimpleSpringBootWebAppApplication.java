@@ -9,7 +9,6 @@ public class SimpleSpringBootWebAppApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(SimpleSpringBootWebAppApplication.class, args);
-
 	}
 
 }
