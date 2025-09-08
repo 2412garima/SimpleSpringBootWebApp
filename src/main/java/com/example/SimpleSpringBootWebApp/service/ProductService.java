@@ -10,12 +10,47 @@ import java.util.List;
 @Service
 public class ProductService {
 
-    List<Product> products= Arrays.asList(
+    List<Product> products= new ArrayList<>(Arrays.asList(
             new Product(10,"iphone",60000),
             new Product(11,"Samsung",50000)
-    );
+    ));
 
     public List<Product> getProducts() {
         return products;
+    }
+
+    public Product getProductById(int id)
+    {
+        return products.stream()
+                .filter(p->p.getId()==id)
+                .findFirst()
+                .get();
+    }
+
+    public void addProduct(Product product)
+    {
+        products.add(product);
+    }
+
+    public void updateProduct(Product product)
+    {
+        for(int i=0;i< products.size();i++)
+        {
+            if(products.get(i).getId()== product.getId())
+            {
+                products.set(i,product);
+            }
+        }
+    }
+
+    public void deleteProduct(int id)
+    {
+        for(int i=0;i< products.size();i++)
+        {
+            if(products.get(i).getId()== id)
+            {
+                products.remove(i);
+            }
+        }
     }
 }
